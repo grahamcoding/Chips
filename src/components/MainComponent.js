@@ -1,6 +1,6 @@
 import React, {Component}  from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
 import Table from 'react-bootstrap/Table'
+import Dropdown from './DropdownComponent';
 
 class Main extends Component {
 
@@ -18,7 +18,8 @@ class Main extends Component {
              <div className="row">
 
                 <div className='col'>
-                  <h5>Dropdown Selections</h5>
+                  <h5 className='pb-1'>Dropdown Selections</h5>
+                  <Dropdown/>
                 </div>
 
                     <div className="col">
