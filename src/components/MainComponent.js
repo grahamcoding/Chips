@@ -1,6 +1,7 @@
 import React, {Component}  from 'react';
 import Table from 'react-bootstrap/Table'
 import Dropdown from './DropdownComponent';
+import Math from './MathComponent';
 
 class Main extends Component {
 
@@ -40,6 +41,7 @@ class Main extends Component {
 
                   <div className='col'>
                     <h5>Math Calculations</h5>
+                  <Math/>
                   </div>
           </div>
         </div>
