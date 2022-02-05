@@ -1,49 +1,30 @@
 import React, {Component}  from 'react';
+import { LOOKUP } from '../shared/lookup'
 
-const lookup = {
-    "Potato": [
-      { id: '1', text: 'Plain', price: '4.09' },
-      { id: '2', text: 'Barbeque', price: '4.09' },
-      { id: '3', text: 'Onion', price: '4.09' }
-    ],
-    "Tortilla": [
-      { id: 'a', text: 'Restaurant', price: '4.79' },
-      { id: 'b', text: 'Bowls', price: '4.79' },
-      { id: 'c', text: 'Bites', price: '4.79' }
-    ],
-    "Cheeze": [
-      { id: 'a', text: 'Crunchy', price: '3.79' },
-      { id: 'b', text: 'Hot', price: '3.79' },
-      { id: 'c', text: 'Puff', price: '3.79' }
-    ]
-  }
-  
   class Math extends Component {
+
+    //Local State is handling the import of the Lookup table of items and the datavalue which sets dropdown options
+
     constructor(props) {
       super(props);
       this.state = {
+        lookup: LOOKUP,
         dataValue: 'Potato',
-        row1: 'Blank',
-        price1: '',
       }
-      this.handleChange1 = this.handleChange1.bind(this);
     }
 
+    //Local onchange to handle the change of dropdown options.
 
     onChange = ({ target: { value } }) => {
       this.setState({ dataValue: value });
     }
-
-    handleChange1(e) {
-      this.setState({ row1: e.target.value });
-    }
-
   
     render() {
       //Renders List Options
       const { dataValue } = this.state;
-      const options = lookup[dataValue];
+      const options = this.state.lookup[dataValue];
 
+      //Initial Div selects overall dropdown options - need to add manually from LOOKUP
       return (
         <div>
           <select onChange={this.onChange}>
@@ -55,12 +36,20 @@ const lookup = {
           <hr />
 
           <select value={this.props.row1} onChange={e => this.props.handleChange1(e)}>
-            {options.map(o => <option key={o.id} value={(o.text) + ' ' + (o.price)}>{o.text}</option>)}
+            {options.map(o => <option key={o.id} value={(o.id) + ' ' + (o.name) + ' ' + (o.price) + ' ' + (o.bag) + ' ' + (o.case)}>{o.name}</option>)}
           </select>
-
         <hr/>
 
-        <p>The value of Row 1 is {this.state.row1}</p>
+        <select value={this.props.row2} onChange={e => this.props.handleChange2(e)}>
+            {options.map(o => <option key={o.id} value={(o.id) + ' ' + (o.name) + ' ' + (o.price) + ' ' + (o.bag) + ' ' + (o.case)}>{o.name}</option>)}
+          </select>
+        <hr/>
+
+        <select value={this.props.row3} onChange={e => this.props.handleChange3(e)}>
+            {options.map(o => <option key={o.id} value={(o.id) + ' ' + (o.name) + ' ' + (o.price) + ' ' + (o.bag) + ' ' + (o.case)}>{o.name}</option>)}
+          </select>
+        <hr/>
+
         <p>The props value of Row 1 is {this.props.row1}</p>
 
         </div>
