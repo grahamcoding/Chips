@@ -8,10 +8,23 @@ class Main extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+          dataValue: 'Potato',
+          row1: 'Test',
+          price1: '',
+        }
+      
+        this.handleChange1 = this.handleChange1.bind(this);
+
+    }
+
+    handleChange1(e) {
+      this.setState({ row1: e.target.value });
     }
 
     render() {
 
+      
         return(
       <div>
         <div className="container">
@@ -27,7 +40,7 @@ class Main extends Component {
                     <Table  striped bordered hover size="sm">
                         <tbody>
                           <tr>
-                            <td>Snack 1 Images</td>
+                            <td>Row 1 Should be {this.state.row1}</td>
                           </tr>
                           <tr>
                             <td>Snack 2 Images</td>
@@ -41,7 +54,12 @@ class Main extends Component {
 
                   <div className='col'>
                     <h5>Math Calculations</h5>
-                  <Math/>
+                  <Math
+                  row1={this.state.row1}
+                  dataValue={this.state.dataValue}
+                  price1={this.state.price1}
+                  handleChange1={this.handleChange1}
+                  />
                   </div>
           </div>
         </div>

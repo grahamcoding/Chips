@@ -54,11 +54,14 @@ const lookup = {
 
   
     render() {
+      //Renders List Options
       const { dataValue } = this.state;
       const options = lookup[dataValue];
-      const rowprice = this.state.row1.split(" ")
-      let rowpricier = rowprice[1]
-      let casePrice = (rowpricier * 6)
+
+
+      const rowprice = this.state.row1.split(" ")  //Split Result by word.
+      let rowpricier = rowprice[1] // Selects Price
+      let casePrice = (rowpricier * 6) 
 
       return (
         <div>
