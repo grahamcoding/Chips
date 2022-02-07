@@ -1,57 +1,43 @@
 import React, {Component}  from 'react';
-import { LOOKUP } from '../shared/lookup'
 
   class Math extends Component {
-
-    //Local State is handling the import of the Lookup table of items and the datavalue which sets dropdown options
 
     constructor(props) {
       super(props);
       this.state = {
-        lookup: LOOKUP,
-        dataValue: 'Potato',
+        margin: '0.00'
       }
     }
 
-    //Local onchange to handle the change of dropdown options.
-
-    onChange = ({ target: { value } }) => {
-      this.setState({ dataValue: value });
-    }
   
     render() {
-      //Renders List Options
-      const { dataValue } = this.state;
-      const options = this.state.lookup[dataValue];
 
-      //Initial Div selects overall dropdown options - need to add manually from LOOKUP
+      const row1 = this.props.row1.split(" ")  //Split Result by word into new array to call values (cases per window) out of the dropdowns.
+      const row2 = this.props.row2.split(" ")  
+      const row3 = this.props.row3.split(" ")
+
+      const retailCost = row1[2] * row1[3] * row1[4]
+      const margin = this.state.margin
+      const setupCost = (row1[2]-margin) * row1[3] * row1[4]
+      const storeProfit = retailCost - setupCost
+
       return (
         <div>
-          <select onChange={this.onChange}>
-            <option value="Potato">Potato Chips</option>
-            <option value="Tortilla">Tortilla Chips</option>
-            <option value="Cheeze">Cheeze Snacks</option>
-          </select>
+          <p>Please Enter Store Margin Per Bag</p>
+          <input type="text"
+          value={ this.state.margin }
+          onChange={(e) => this.setState({ margin: e.target.value }) }/>
+          
+          <p>Retail Cost = {retailCost} </p>
+          <p>Setup Cost = {setupCost} </p>
+          <p>Store Profit = {storeProfit}</p>
 
-          <hr />
-
-          <select value={this.props.row1} onChange={e => this.props.handleChange1(e)}>
-            {options.map(o => <option key={o.id} value={(o.id) + ' ' + (o.name) + ' ' + (o.price) + ' ' + (o.bag) + ' ' + (o.case)}>{o.name}</option>)}
-          </select>
-        <hr/>
-
-        <select value={this.props.row2} onChange={e => this.props.handleChange2(e)}>
-            {options.map(o => <option key={o.id} value={(o.id) + ' ' + (o.name) + ' ' + (o.price) + ' ' + (o.bag) + ' ' + (o.case)}>{o.name}</option>)}
-          </select>
-        <hr/>
-
-        <select value={this.props.row3} onChange={e => this.props.handleChange3(e)}>
-            {options.map(o => <option key={o.id} value={(o.id) + ' ' + (o.name) + ' ' + (o.price) + ' ' + (o.bag) + ' ' + (o.case)}>{o.name}</option>)}
-          </select>
-        <hr/>
-
-        <p>The props value of Row 1 is {this.props.row1}</p>
-
+          ID is {row1[0]}, 
+                      Name is {row1[1]},
+                      Price {row1[2]}, 
+                      Bags per Case is {row1[3]},
+                      Cases per window is {row1[4]},
+                      Cost is {row1[2] * row1[3]} 
         </div>
       );
     }

@@ -45,8 +45,15 @@ class Main extends Component {
              <div className="row">
 
                 <div className='col'>
-                  <h5 className='pb-1'>Dropdown Selections</h5>
-                  <Dropdown/>
+                  <h5 className='pb-1'>Select Display Windows</h5>
+                  <Dropdown
+                  row1={this.state.row1}
+                  handleChange1={this.handleChange1}
+                  row2={this.state.row2}
+                  handleChange2={this.handleChange2}
+                  row3={this.state.row3}
+                  handleChange3={this.handleChange3}
+                  />
                 </div>
 
                     <div className="col">
@@ -81,11 +88,8 @@ class Main extends Component {
                     <h5>Math Calculations</h5>
                   <Math
                   row1={this.state.row1}
-                  handleChange1={this.handleChange1}
                   row2={this.state.row2}
-                  handleChange2={this.handleChange2}
                   row3={this.state.row3}
-                  handleChange3={this.handleChange3}
                   />
                   </div>
           </div>
