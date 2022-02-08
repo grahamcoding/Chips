@@ -8,11 +8,16 @@ import React, {Component}  from 'react';
         margin: '0.00'
       }
     }
-
   
+    getNum(val) {   
+      val = +val || 0  // Converts NaN from undefined windows to 0 to not break math/readibility
+      val = val.toFixed(2) //Shortens and rounds to 2 decimal places.
+      return val;
+   }
+
     render() {
 
-      const row1 = this.props.row1.split(" ")  //Split Result by word into new array to call values (cases per window) out of the dropdowns.
+      let row1 = this.props.row1.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
       const row2 = this.props.row2.split(" ")  
       const row3 = this.props.row3.split(" ")
 
@@ -28,9 +33,9 @@ import React, {Component}  from 'react';
           value={ this.state.margin }
           onChange={(e) => this.setState({ margin: e.target.value }) }/>
           
-          <p>Retail Cost = {retailCost} </p>
-          <p>Setup Cost = {setupCost} </p>
-          <p>Store Profit = {storeProfit}</p>
+          <p>Retail Cost = {this.getNum(retailCost)} </p>
+          <p>Setup Cost = {this.getNum(setupCost)} </p>
+          <p>Store Profit = {this.getNum(storeProfit)}</p>
 
           ID is {row1[0]}, 
                       Name is {row1[1]},

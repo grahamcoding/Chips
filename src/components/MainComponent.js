@@ -2,6 +2,9 @@ import React, {Component}  from 'react';
 import Table from 'react-bootstrap/Table'
 import Dropdown from './DropdownComponent';
 import Math from './MathComponent';
+import Card from 'react-bootstrap/Card'
+import Nav from 'react-bootstrap/Nav'
+import Button from 'react-bootstrap/Button'
 
 class Main extends Component {
 
@@ -83,6 +86,8 @@ class Main extends Component {
                       row3 is {this.state.row3}
 
                     </div>
+
+
 
                   <div className='col'>
                     <h5>Math Calculations</h5>
