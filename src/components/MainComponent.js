@@ -3,8 +3,6 @@ import Table from 'react-bootstrap/Table'
 import Dropdown from './DropdownComponent';
 import Math from './MathComponent';
 import Card from 'react-bootstrap/Card'
-import Nav from 'react-bootstrap/Nav'
-import Button from 'react-bootstrap/Button'
 
 class Main extends Component {
 
@@ -12,10 +10,11 @@ class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          row1: 'Test',
+          row1: 'Test',   //Setting state for parent component to handle to row information passed up and down the entire app
           row2: 'Test',
-          row3: 'Test'
+          row3: 'Test',
         }
+      
       
         this.handleChange1 = this.handleChange1.bind(this);
         this.handleChange2 = this.handleChange2.bind(this);
@@ -24,7 +23,7 @@ class Main extends Component {
     }
 
     handleChange1(e) {
-      this.setState({ row1: e.target.value });
+      this.setState({ row1: e.target.value }); //Along with .bind this above, links the changes from the dropdown components in the children to change the information when selected.
     }
 
     handleChange2(e) {
@@ -33,6 +32,10 @@ class Main extends Component {
 
     handleChange3(e) {
       this.setState({ row3: e.target.value });
+    }
+
+    addDefaultSrc(ev){
+      ev.target.src = '/assets/images/p1.png'  //Pulls "on error" prop from img to provide a deault image instead of a broken image.
     }
 
     render() {
@@ -48,31 +51,45 @@ class Main extends Component {
              <div className="row">
 
                 <div className='col'>
-                  <h5 className='pb-1'>Select Display Windows</h5>
-                  <Dropdown
-                  row1={this.state.row1}
-                  handleChange1={this.handleChange1}
-                  row2={this.state.row2}
-                  handleChange2={this.handleChange2}
-                  row3={this.state.row3}
-                  handleChange3={this.handleChange3}
-                  />
+                <Card>
+                <Card.Header><h2 className='pb-1'>Display Windows</h2></Card.Header>
+                  <Card.Body>
+                    <Dropdown
+                    row1={this.state.row1}
+                    handleChange1={this.handleChange1}
+                    row2={this.state.row2}
+                    handleChange2={this.handleChange2}
+                    row3={this.state.row3}
+                    handleChange3={this.handleChange3}
+                    />
+                  </Card.Body>
+                </Card>
                 </div>
 
                     <div className="col">
-                    <Table  striped bordered hover size="sm">
+                    <Card>
+                      <Card.Header><h2>Sales Display Preview</h2></Card.Header>      
+                      <Card.Body>                      
+                        <Table  striped bordered hover size="sm">
                         <tbody>
                           <tr>
-                            <td>Row 1 image is {row1split[0]}</td>
+                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc}/>
+                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc}/>
+                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc}/>
                           </tr>
                           <tr>
-                            <td>Snack 2 Image is {row2split[0]}</td>
+                              <img width='85px' src={`/assets/images/${row2split[0]}.png`} onError={this.addDefaultSrc}/>
+                              <img width='85px' src={`/assets/images/${row2split[0]}.png`} onError={this.addDefaultSrc}/>
+                              <img width='85px' src={`/assets/images/${row2split[0]}.png`} onError={this.addDefaultSrc}/>
                           </tr>
                           <tr>
-                            <td>Snack 3 Images {row3split[0]}</td>
+                              <img width='85px' src={`/assets/images/${row3split[0]}.png`} onError={this.addDefaultSrc}/>
+                              <img width='85px' src={`/assets/images/${row3split[0]}.png`} onError={this.addDefaultSrc}/>
+                              <img width='85px' src={`/assets/images/${row3split[0]}.png`} onError={this.addDefaultSrc}/>
                           </tr>
                         </tbody>
-                      </Table>
+                      </Table></Card.Body>              
+
 
                       Testing: Row 1 Full Data is {this.state.row1}, 
                       ID is {row1split[0]}, 
@@ -80,24 +97,28 @@ class Main extends Component {
                       Price {row1split[2]}, 
                       Bags per Case is {row1split[3]},
                       Cases per window is {row1split[4]},
+                      Image is {row1split[5]},
                       Cost is {row1split[2] * row1split[3]} 
 
                       row2 is {this.state.row2}
-                      row3 is {this.state.row3}
-
-                    </div>
-
-
+                      row3 is {this.state.row3}</Card>
+                  </div>
 
                   <div className='col'>
-                    <h5>Math Calculations</h5>
-                  <Math
-                  row1={this.state.row1}
-                  row2={this.state.row2}
-                  row3={this.state.row3}
-                  />
+                  <Card>
+                    <Card.Header><h2>Math Calculations</h2></Card.Header>
+                    <Card.Body>
+                      <Math
+                      row1={this.state.row1}
+                      row2={this.state.row2}
+                      row3={this.state.row3}
+                      />
+                    </Card.Body>
+                  </Card>
                   </div>
+
           </div>
+
         </div>
      </div>
         )

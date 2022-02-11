@@ -40,7 +40,7 @@ import { LOOKUP } from '../shared/lookup'
         <hr />
 
           <select value={this.props.row1} onChange={e => this.props.handleChange1(e)}>
-            {options.map(o => <option key={o.id} value={(o.id) + ' ' + (o.name) + ' ' + (o.price) + ' ' + (o.bag) + ' ' + (o.case)}>{o.name}</option>)}
+            {options.map(o => <option key={o.id} value={(o.id) + ' ' + (o.name) + ' ' + (o.price) + ' ' + (o.bag) + ' ' + (o.case) + ' ' + (o.image)}>{o.name}</option>)}
           </select>
 
         <p>Cases Required: {row1cases[4]}</p>
