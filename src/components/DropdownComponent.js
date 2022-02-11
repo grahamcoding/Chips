@@ -31,38 +31,37 @@ import { LOOKUP } from '../shared/lookup'
       //Initial Div selects overall dropdown options - need to add manually from LOOKUP
       return (
         <div>
-          <select onChange={this.onChange}>
+          <p className='lead'>Select Type of Product</p>
+          <select onChange={this.onChange} className='lead p-1 mb-3'>
             <option value="Potato">Potato Chips</option>
             <option value="Tortilla">Tortilla Chips</option>
             <option value="Cheeze">Cheeze Snacks</option>
           </select>
 
-        <hr />
+        <hr className='mb-4' />
 
-          <select value={this.props.row1} onChange={e => this.props.handleChange1(e)}>
+          <select value={this.props.row1} onChange={e => this.props.handleChange1(e)} className='lead p-1'>
             {options.map(o => <option key={o.id} value={(o.id) + ' ' + (o.name) + ' ' + (o.price) + ' ' + (o.bag) + ' ' + (o.case) + ' ' + (o.image)}>{o.name}</option>)}
           </select>
 
-        <p>Cases Required: {row1cases[4]}</p>
+        <p className='lead'>Cases Required: <strong>{row1cases[4]}</strong></p>
 
-        <hr/>
+        <hr className='mb-4'/>
 
 
-        <select value={this.props.row2} onChange={e => this.props.handleChange2(e)}>
+        <select value={this.props.row2} onChange={e => this.props.handleChange2(e)} className='lead p-1'>
             {options.map(o => <option key={o.id} value={(o.id) + ' ' + (o.name) + ' ' + (o.price) + ' ' + (o.bag) + ' ' + (o.case)}>{o.name}</option>)}
           </select>
 
-        <p>Cases Required: {row2cases[4]}</p>
+        <p className='lead'>Cases Required: <strong>{row2cases[4]}</strong></p>
 
-        <hr/>
+        <hr className='mb-4'/>
 
-        <select value={this.props.row3} onChange={e => this.props.handleChange3(e)}>
+        <select value={this.props.row3} onChange={e => this.props.handleChange3(e)} className='lead p-1'>
             {options.map(o => <option key={o.id} value={(o.id) + ' ' + (o.name) + ' ' + (o.price) + ' ' + (o.bag) + ' ' + (o.case)}>{o.name}</option>)}
           </select>
 
-        <p>Cases Required: {row3cases[4]}</p>
-
-        <hr/>
+        <p className='lead'>Cases Required: <strong>{row3cases[4]}</strong></p>
 
         </div>
       );

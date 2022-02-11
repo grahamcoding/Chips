@@ -3,6 +3,7 @@ import Table from 'react-bootstrap/Table'
 import Dropdown from './DropdownComponent';
 import Math from './MathComponent';
 import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
 class Main extends Component {
 
@@ -22,6 +23,10 @@ class Main extends Component {
 
     }
 
+    componentDidMount() {  //Hacky solution for full page background color
+      document.body.style.backgroundColor = "#CAE7E4"
+  }
+
     handleChange1(e) {
       this.setState({ row1: e.target.value }); //Along with .bind this above, links the changes from the dropdown components in the children to change the information when selected.
     }
@@ -38,8 +43,11 @@ class Main extends Component {
       ev.target.src = '/assets/images/p1.png'  //Pulls "on error" prop from img to provide a deault image instead of a broken image.
     }
 
+    state = { showing: true };
+
     render() {
 
+      const { showing } = this.state;
       const row1split = this.state.row1.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
       const row2split = this.state.row2.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
       const row3split = this.state.row3.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
@@ -47,24 +55,31 @@ class Main extends Component {
         return(
       <div>
         <div className="container">
-          <div className='row justify-content-center p-5'><h1>Salty Snack Sales Tool (3ST)</h1></div>
-             <div className="row">
-
-                <div className='col'>
-                <Card>
-                <Card.Header><h2 className='pb-1'>Display Windows</h2></Card.Header>
-                  <Card.Body>
-                    <Dropdown
-                    row1={this.state.row1}
-                    handleChange1={this.handleChange1}
-                    row2={this.state.row2}
-                    handleChange2={this.handleChange2}
-                    row3={this.state.row3}
-                    handleChange3={this.handleChange3}
-                    />
-                  </Card.Body>
-                </Card>
-                </div>
+          <div className='row justify-content-center p-5'>
+            <Card className='p-5'><h1>Salty Snack Sales Tool (3ST)</h1></Card>
+          </div>
+          
+             <div className="row mx-auto">
+                { showing 
+                    ?                 
+                    null
+                    :
+                    <div className='col'>                     
+                    <Card>
+                    <Card.Header ><h2 className='pb-1'>Display Windows</h2></Card.Header>
+                      <Card.Body>
+                        <Dropdown
+                        row1={this.state.row1}
+                        handleChange1={this.handleChange1}
+                        row2={this.state.row2}
+                        handleChange2={this.handleChange2}
+                        row3={this.state.row3}
+                        handleChange3={this.handleChange3}
+                        />
+                      </Card.Body>
+                    </Card>
+                    </div>
+                }
 
                     <div className="col">
                     <Card>
@@ -73,25 +88,31 @@ class Main extends Component {
                         <Table  striped bordered hover size="sm">
                         <tbody>
                           <tr>
-                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc}/>
-                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc}/>
-                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc}/>
+                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
+                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
+                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
                           </tr>
                           <tr>
-                              <img width='85px' src={`/assets/images/${row2split[0]}.png`} onError={this.addDefaultSrc}/>
-                              <img width='85px' src={`/assets/images/${row2split[0]}.png`} onError={this.addDefaultSrc}/>
-                              <img width='85px' src={`/assets/images/${row2split[0]}.png`} onError={this.addDefaultSrc}/>
+                              <img width='85px' src={`/assets/images/${row2split[0]}.png`} onError={this.addDefaultSrc} alt='{row2split[1]}'/>
+                              <img width='85px' src={`/assets/images/${row2split[0]}.png`} onError={this.addDefaultSrc} alt='{row2split[1]}'/>
+                              <img width='85px' src={`/assets/images/${row2split[0]}.png`} onError={this.addDefaultSrc} alt='{row2split[1]}'/>
                           </tr>
                           <tr>
-                              <img width='85px' src={`/assets/images/${row3split[0]}.png`} onError={this.addDefaultSrc}/>
-                              <img width='85px' src={`/assets/images/${row3split[0]}.png`} onError={this.addDefaultSrc}/>
-                              <img width='85px' src={`/assets/images/${row3split[0]}.png`} onError={this.addDefaultSrc}/>
+                              <img width='85px' src={`/assets/images/${row3split[0]}.png`} onError={this.addDefaultSrc} alt='{row3split[1]}'/>
+                              <img width='85px' src={`/assets/images/${row3split[0]}.png`} onError={this.addDefaultSrc} alt='{row3split[1]}'/>
+                              <img width='85px' src={`/assets/images/${row3split[0]}.png`} onError={this.addDefaultSrc} alt='{row3split[1]}'/>
                           </tr>
                         </tbody>
-                      </Table></Card.Body>              
+                      </Table></Card.Body> 
+
+                      <Button className="mx-5 mb-3 p-1" onClick={() => this.setState({ showing: !showing })}>Presentation Mode</Button>             
 
 
-                      Testing: Row 1 Full Data is {this.state.row1}, 
+                    { /* 
+                    
+                    Comments in Render!
+
+                    Testing: Row 1 Full Data is {this.state.row1}, 
                       ID is {row1split[0]}, 
                       Name is {row1split[1]},
                       Price {row1split[2]}, 
@@ -101,12 +122,15 @@ class Main extends Component {
                       Cost is {row1split[2] * row1split[3]} 
 
                       row2 is {this.state.row2}
-                      row3 is {this.state.row3}</Card>
+                     row3 is {this.state.row3} */}
+                      
+                      
+                      </Card>
                   </div>
 
                   <div className='col'>
                   <Card>
-                    <Card.Header><h2>Math Calculations</h2></Card.Header>
+                    <Card.Header><h2>Profit/Cost</h2></Card.Header>
                     <Card.Body>
                       <Math
                       row1={this.state.row1}

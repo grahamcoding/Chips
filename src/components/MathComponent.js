@@ -21,28 +21,35 @@ import React, {Component}  from 'react';
       const row2 = this.props.row2.split(" ")  
       const row3 = this.props.row3.split(" ")
 
-      const retailCost = row1[2] * row1[3] * row1[4]
+      const retailCost = (row1[2] * row1[3] * row1[4]) + (row2[2] * row2[3] * row2[4]) + (row3[2] * row3[3] * row3[4])
       const margin = this.state.margin
-      const setupCost = (row1[2]-margin) * row1[3] * row1[4]
+      const setupCost = ((row1[2]-margin) * row1[3] * row1[4]) + ((row2[2]-margin) * row2[3] * row2[4]) + ((row3[2]-margin) * row3[3] * row3[4])
       const storeProfit = retailCost - setupCost
 
       return (
         <div>
-          <p>Please Enter Store Margin Per Bag</p>
+          <p className='p-1'><h5>Retail Cost = ${this.getNum(retailCost)} </h5></p>
+          <hr/>
+          <p className='p-1'><h5>Setup Cost = ${this.getNum(setupCost)}</h5> </p>
+          <hr/>
+          <p className='p-1'><h2>Store Profit = ${this.getNum(storeProfit)}</h2></p>
+          <p className='p-1'><span className='me-2 h5'>Store Margin Per Bag = $</span>
           <input type="text"
+          size="2"
+          className='h5 text-center'
           value={ this.state.margin }
           onChange={(e) => this.setState({ margin: e.target.value }) }/>
-          
-          <p>Retail Cost = {this.getNum(retailCost)} </p>
-          <p>Setup Cost = {this.getNum(setupCost)} </p>
-          <p>Store Profit = {this.getNum(storeProfit)}</p>
+          </p>
 
-          ID is {row1[0]}, 
-                      Name is {row1[1]},
-                      Price {row1[2]}, 
-                      Bags per Case is {row1[3]},
-                      Cases per window is {row1[4]},
-                      Cost is {row1[2] * row1[3]} 
+
+          {/*ID is {row1[0]}, 
+            Name is {row1[1]},
+            Price {row1[2]}, 
+            Bags per Case is {row1[3]},
+            Cases per window is {row1[4]},
+            Cost is {row1[2] * row1[3]} 
+          */}
+
         </div>
       );
     }
