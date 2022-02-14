@@ -4,7 +4,7 @@ import Dropdown from './DropdownComponent';
 import Math from './MathComponent';
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import Slide from 'react-reveal/Slide';
+import Fade from 'react-reveal/Fade';
 
 class Main extends Component {
 
@@ -15,12 +15,14 @@ class Main extends Component {
           row1: 'Test',   //Setting state for parent component to handle to row information passed up and down the entire app
           row2: 'Test',
           row3: 'Test',
+          show: true,
         }
       
       
         this.handleChange1 = this.handleChange1.bind(this);
         this.handleChange2 = this.handleChange2.bind(this);
         this.handleChange3 = this.handleChange3.bind(this);
+        this.handleClick = this.handleClick.bind(this);
 
     }
 
@@ -40,15 +42,17 @@ class Main extends Component {
       this.setState({ row3: e.target.value });
     }
 
-    addDefaultSrc(ev){
-      ev.target.src = '/assets/images/blank.png'  //Pulls "on error" prop from img to provide a deault image instead of a broken image.
+    handleClick() {
+      this.setState({ show: !this.state.show });
     }
 
-    state = { showing: true };
+    addDefaultSrc(ev){
+      ev.target.src = '/assets/images/blank.png'  //Pulls "on error" prop from img to provide a default image instead of a broken image.
+    }
+
 
     render() {
 
-      const { showing } = this.state;
       const row1split = this.state.row1.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
       const row2split = this.state.row2.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
       const row3split = this.state.row3.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
@@ -57,15 +61,11 @@ class Main extends Component {
       <div>
         <div className="container">
           <div className='row justify-content-center p-5'>
-            <Slide top><Card className='p-5'><h1>Salty Snack Sales Tool (3ST)</h1></Card></Slide>
+            <Card className='p-5'><h1>Salty Snack Sales Tool (3ST)</h1></Card>
           </div>
           
              <div className="row mx-auto">
-                { showing 
-                    ?                 
-                    null
-                    :
-                    <Slide left>
+                    <Fade left when={this.state.show}>
                     <div className='col'>                     
                     <Card>
                     <Card.Header ><h2 className='p-2'>Display Windows</h2></Card.Header>
@@ -81,11 +81,9 @@ class Main extends Component {
                       </Card.Body>
                     </Card>
                     </div>
-                    </Slide>
-                }
+                    </Fade>
 
                     <div className="col">
-                    <Slide bottom>
                     <Card>
                       <Card.Header><h2 className='p-2'>Sales Display Preview</h2></Card.Header>      
                       <Card.Body>                      
@@ -110,7 +108,7 @@ class Main extends Component {
                       </Table>
                       </Card.Body>
 
-                      <Button className="mx-5 mb-3 p-1" onClick={() => this.setState({ showing: !showing })}>Presentation Mode</Button>             
+                      <Button className="mx-5 mb-3 p-1" onClick={this.handleClick}>Press to enable { this.state.show ? 'sales' : 'setup' } mode</Button>             
                     { /* 
                     Comments in Render!
 
@@ -126,11 +124,9 @@ class Main extends Component {
                       row2 is {this.state.row2}
                      row3 is {this.state.row3} */}
                       </Card>
-                      </Slide>
                   </div>
 
                   <div className='col'>
-                  <Slide right>
                   <Card>
                     <Card.Header><h2 className='p-2'>Profit/Cost</h2></Card.Header>
                     <Card.Body>
@@ -141,7 +137,6 @@ class Main extends Component {
                       />
                     </Card.Body>
                   </Card>
-                  </Slide>
                   </div>
 
           </div>
