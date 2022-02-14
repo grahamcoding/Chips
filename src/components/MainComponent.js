@@ -4,6 +4,7 @@ import Dropdown from './DropdownComponent';
 import Math from './MathComponent';
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import Slide from 'react-reveal/Slide';
 
 class Main extends Component {
 
@@ -40,7 +41,7 @@ class Main extends Component {
     }
 
     addDefaultSrc(ev){
-      ev.target.src = '/assets/images/p1.png'  //Pulls "on error" prop from img to provide a deault image instead of a broken image.
+      ev.target.src = '/assets/images/blank.png'  //Pulls "on error" prop from img to provide a deault image instead of a broken image.
     }
 
     state = { showing: true };
@@ -56,7 +57,7 @@ class Main extends Component {
       <div>
         <div className="container">
           <div className='row justify-content-center p-5'>
-            <Card className='p-5'><h1>Salty Snack Sales Tool (3ST)</h1></Card>
+            <Slide top><Card className='p-5'><h1>Salty Snack Sales Tool (3ST)</h1></Card></Slide>
           </div>
           
              <div className="row mx-auto">
@@ -64,9 +65,10 @@ class Main extends Component {
                     ?                 
                     null
                     :
+                    <Slide left>
                     <div className='col'>                     
                     <Card>
-                    <Card.Header ><h2 className='pb-1'>Display Windows</h2></Card.Header>
+                    <Card.Header ><h2 className='p-2'>Display Windows</h2></Card.Header>
                       <Card.Body>
                         <Dropdown
                         row1={this.state.row1}
@@ -79,11 +81,13 @@ class Main extends Component {
                       </Card.Body>
                     </Card>
                     </div>
+                    </Slide>
                 }
 
                     <div className="col">
+                    <Slide bottom>
                     <Card>
-                      <Card.Header><h2>Sales Display Preview</h2></Card.Header>      
+                      <Card.Header><h2 className='p-2'>Sales Display Preview</h2></Card.Header>      
                       <Card.Body>                      
                         <Table  striped bordered hover size="sm">
                         <tbody>
@@ -103,13 +107,11 @@ class Main extends Component {
                               <img width='85px' src={`/assets/images/${row3split[0]}.png`} onError={this.addDefaultSrc} alt='{row3split[1]}'/>
                           </tr>
                         </tbody>
-                      </Table></Card.Body> 
+                      </Table>
+                      </Card.Body>
 
                       <Button className="mx-5 mb-3 p-1" onClick={() => this.setState({ showing: !showing })}>Presentation Mode</Button>             
-
-
                     { /* 
-                    
                     Comments in Render!
 
                     Testing: Row 1 Full Data is {this.state.row1}, 
@@ -123,14 +125,14 @@ class Main extends Component {
 
                       row2 is {this.state.row2}
                      row3 is {this.state.row3} */}
-                      
-                      
                       </Card>
+                      </Slide>
                   </div>
 
                   <div className='col'>
+                  <Slide right>
                   <Card>
-                    <Card.Header><h2>Profit/Cost</h2></Card.Header>
+                    <Card.Header><h2 className='p-2'>Profit/Cost</h2></Card.Header>
                     <Card.Body>
                       <Math
                       row1={this.state.row1}
@@ -139,6 +141,7 @@ class Main extends Component {
                       />
                     </Card.Body>
                   </Card>
+                  </Slide>
                   </div>
 
           </div>
