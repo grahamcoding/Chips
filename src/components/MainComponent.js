@@ -85,10 +85,14 @@ class Main extends Component {
 
                     <div className="col-lg-5">
                     <Card>
-                      <Card.Header><h2 className='p-2'>Sales Display Preview</h2></Card.Header>      
+                      <Card.Header><h2 className='p-2'>Sales Display Preview</h2>
+                      <Button className="mx-4 mb-1 p-1">3 Shelf Merchandiser</Button>
+                      </Card.Header>
+
                       <Card.Body>                      
                         <Table   bordered size="lg">
                         <tbody>
+                              
                           <tr>
                               <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
                               <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>

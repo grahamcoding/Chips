@@ -10,7 +10,7 @@ import React, {Component}  from 'react';
     }
   
     getNum(val) {   
-      val = +val || 0  // Converts NaN from undefined windows to 0 to not break math/readibility
+      val = +val || 0  // Converts NaN from undefined windows to 0 to not break page when undefined.
       val = val.toFixed(2) //Shortens and rounds to 2 decimal places.
       return val;
    }
