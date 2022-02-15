@@ -66,7 +66,7 @@ class Main extends Component {
           
              <div className="row mx-auto">
                     <Fade left when={this.state.show}>
-                    <div className='col'>                     
+                    <div className='col-lg-3'>                     
                     <Card>
                     <Card.Header ><h2 className='p-2'>Display Windows</h2></Card.Header>
                       <Card.Body>
@@ -83,11 +83,11 @@ class Main extends Component {
                     </div>
                     </Fade>
 
-                    <div className="col">
+                    <div className="col-lg-5">
                     <Card>
                       <Card.Header><h2 className='p-2'>Sales Display Preview</h2></Card.Header>      
                       <Card.Body>                      
-                        <Table  striped bordered hover size="sm">
+                        <Table   bordered size="lg">
                         <tbody>
                           <tr>
                               <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
@@ -106,9 +106,7 @@ class Main extends Component {
                           </tr>
                         </tbody>
                       </Table>
-                      </Card.Body>
-
-                      <Button className="mx-5 mb-3 p-1" onClick={this.handleClick}>Press to enable { this.state.show ? 'sales' : 'setup' } mode</Button>             
+                      </Card.Body>       
                     { /* 
                     Comments in Render!
 
@@ -135,6 +133,8 @@ class Main extends Component {
                       row2={this.state.row2}
                       row3={this.state.row3}
                       />
+                      <hr className='my-4'/>
+                      <Button className="mx-5 mb-3 p-1" onClick={this.handleClick}>Press to enable { this.state.show ? 'sales' : 'setup' } mode</Button>      
                     </Card.Body>
                   </Card>
                   </div>
