@@ -22,13 +22,14 @@ import { LOOKUP } from '../shared/lookup'
     render() {
       //Renders List Options
       const { dataValue } = this.state;
-      const options = this.state.lookup[dataValue];
+      const options = this.state.lookup[dataValue]; //Sets option for mapping the dropdown to the value selected for the product type
+      const dip = this.state.lookup["Dip"] //Pulls the dip section of the lookup for dip selection
 
       const row1cases = this.props.row1.split(" ")  //Split Result by word into new array to call values (cases per window) out of the dropdowns.
       const row2cases = this.props.row2.split(" ")  
       const row3cases = this.props.row3.split(" ")  
 
-      //Initial Div selects overall dropdown options - need to add manually from LOOKUP
+      //Initial Div selects overall dropdown options - need to add manually from LOOKUP so it can map the option by name
       return (
         <div>
           <p className='lead'>Select Type of Product</p>
@@ -38,9 +39,9 @@ import { LOOKUP } from '../shared/lookup'
             <option value="Cheeze">Cheeze Snacks</option>
           </select>
           <p className='lead'>Select Dip Option</p>
-          <select className='lead p-1 mb-3'>
+          <select className='lead p-1'>
+          {dip.map(o => <option key={o.id} value={(o.id) + ' ' + (o.name) + ' ' + (o.price) + ' ' + (o.bag) + ' ' + (o.case) + ' ' + (o.image)}>{o.name}</option>)}
           </select>
-
 
         <hr className='mb-4' />
 
