@@ -15,6 +15,7 @@ class Main extends Component {
           row1: 'Test',   //Setting state for parent component to handle to row information passed up and down the entire app
           row2: 'Test',
           row3: 'Test',
+          dip: 'Test',
           show: true,
         }
       
@@ -22,6 +23,7 @@ class Main extends Component {
         this.handleChange1 = this.handleChange1.bind(this);
         this.handleChange2 = this.handleChange2.bind(this);
         this.handleChange3 = this.handleChange3.bind(this);
+        this.handleChangeDip = this.handleChangeDip.bind(this);
         this.handleClick = this.handleClick.bind(this);
 
     }
@@ -40,6 +42,10 @@ class Main extends Component {
 
     handleChange3(e) {
       this.setState({ row3: e.target.value });
+    }
+
+    handleChangeDip(e) {
+      this.setState({ dip: e.target.value });
     }
 
     handleClick() {
@@ -77,6 +83,8 @@ class Main extends Component {
                         handleChange2={this.handleChange2}
                         row3={this.state.row3}
                         handleChange3={this.handleChange3}
+                        dip={this.state.dip}
+                        handleChangeDip={this.handleChangeDip}
                         />
                       </Card.Body>
                     </Card>

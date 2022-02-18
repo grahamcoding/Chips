@@ -27,7 +27,8 @@ import { LOOKUP } from '../shared/lookup'
 
       const row1cases = this.props.row1.split(" ")  //Split Result by word into new array to call values (cases per window) out of the dropdowns.
       const row2cases = this.props.row2.split(" ")  
-      const row3cases = this.props.row3.split(" ")  
+      const row3cases = this.props.row3.split(" ") 
+      const dipcases = this.props.dip.split(" ")  
 
       //Initial Div selects overall dropdown options - need to add manually from LOOKUP so it can map the option by name
       return (
@@ -39,9 +40,11 @@ import { LOOKUP } from '../shared/lookup'
             <option value="Cheeze">Cheeze Snacks</option>
           </select>
           <p className='lead'>Select Dip Option</p>
-          <select className='lead p-1'>
+          <select value={this.props.dip} onChange={e => this.props.handleChangeDip(e)} className='lead p-1'>
           {dip.map(o => <option key={o.id} value={(o.id) + ' ' + (o.name) + ' ' + (o.price) + ' ' + (o.bag) + ' ' + (o.case) + ' ' + (o.image)}>{o.name}</option>)}
           </select>
+
+          <p className='lead'>Cases Required: <strong>{dipcases[4]}</strong></p>
 
         <hr className='mb-4' />
 
