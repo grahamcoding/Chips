@@ -16,7 +16,8 @@ class Main extends Component {
           row2: 'Test',
           row3: 'Test',
           dip: 'Test',
-          show: true,
+          showing: true,
+          fiveshelf: false,
         }
       
       
@@ -24,7 +25,6 @@ class Main extends Component {
         this.handleChange2 = this.handleChange2.bind(this);
         this.handleChange3 = this.handleChange3.bind(this);
         this.handleChangeDip = this.handleChangeDip.bind(this);
-        this.handleClick = this.handleClick.bind(this);
 
     }
 
@@ -48,38 +48,37 @@ class Main extends Component {
       this.setState({ dip: e.target.value });
     }
 
-    handleClick() {
-      this.setState({ show: !this.state.show });
-    }
-
     addDefaultSrc(ev){
       ev.target.src = '/assets/images/blank.png'  //Pulls "on error" prop from img to provide a default image instead of a broken image.
     }
 
     addDefaultSrcDip(ev){
-      ev.target.src = '/assets/images/dipblank.png'  //Pulls "on error" prop from img to provide a default image instead of a broken image.
+      ev.target.src = '/assets/images/dipblank.png'  //Pulls "on error" prop from img to provide a default image instead of a broken image for dip.
     }
 
 
     render() {
 
+      const { showing } = this.state; // Enables Hiding of Components
+      const { fiveshelf } = this.state; // 5 Shelf Toggle
       const row1split = this.state.row1.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
       const row2split = this.state.row2.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
       const row3split = this.state.row3.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
-      const dipcases = this.state.dip.split(" ")  
+      const dipcases = this.state.dip.split(" ") //Split Result by word into new array to call values out of the dropdowns.
 
         return(
       <div>
         <div className="container">
-          <div className='row justify-content-center p-5'>
-            <Card className='p-5'><h1>Salty Snack Sales Tool (3ST)</h1></Card>
+          <div className='row justify-content-center p-3'>
+            <Card className='p-1'><h1>Salty Snack Sales Tool (3ST)</h1></Card>
           </div>
           
              <div className="row mx-auto">
-                    <Fade left when={this.state.show}>
-                    <div className='col-lg-3'>                     
+             { showing 
+                    ?                 
+                    <div className='col-lg'>                     
                     <Card>
-                    <Card.Header ><h2 className='p-2'>Display Windows</h2></Card.Header>
+                    <Card.Header ><h3 className='p-1'>Display Windows</h3></Card.Header>
                       <Card.Body>
                         <Dropdown
                         row1={this.state.row1}
@@ -90,21 +89,46 @@ class Main extends Component {
                         handleChange3={this.handleChange3}
                         dip={this.state.dip}
                         handleChangeDip={this.handleChangeDip}
+                        fiveshelf={this.state.fiveshelf}
                         />
                       </Card.Body>
                     </Card>
                     </div>
-                    </Fade>
+                    :
+                    null
+              }
 
-                    <div className="col-lg-5">
+                    <div className="col">
                     <Card>
                       <Card.Header><h2 className='p-2'>Sales Display Preview</h2>
-                      <Button className="mx-4 mb-1 p-1">3 Shelf Merchandiser</Button>
+                      <Button className="mx-4 mb-1 p-1" onClick={() => this.setState({ fiveshelf: !fiveshelf })}> Switch to { this.state.fiveshelf? '3 Shelf' : '5 Shelf' } Display</Button>
                       </Card.Header>
 
                       <Card.Body>                      
                         <Table   bordered size="lg">
                         <tbody>
+                        { fiveshelf 
+                    ?                 
+                          <tr>
+                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
+                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
+                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
+                          </tr>
+              
+                    :
+                    null
+              }
+                       { fiveshelf 
+                    ?                 
+                          <tr>
+                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
+                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
+                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
+                          </tr>
+              
+                    :
+                    null
+              }
                           <tr>
                               <img width='60px' src={`/assets/images/${dipcases[0]}.png`} onError={this.addDefaultSrcDip} alt='{dipcases[1]}'/>
                               <img width='60px' src={`/assets/images/${dipcases[0]}.png`} onError={this.addDefaultSrcDip} alt='{dipcases[1]}'/>
@@ -126,6 +150,7 @@ class Main extends Component {
                               <img width='85px' src={`/assets/images/${row3split[0]}.png`} onError={this.addDefaultSrc} alt='{row3split[1]}'/>
                               <img width='85px' src={`/assets/images/${row3split[0]}.png`} onError={this.addDefaultSrc} alt='{row3split[1]}'/>
                           </tr>
+
                         </tbody>
                       </Table>
                       </Card.Body>       
@@ -146,7 +171,7 @@ class Main extends Component {
                       </Card>
                   </div>
 
-                  <div className='col'>
+                  <div className='col-lg-4'>
                   <Card>
                     <Card.Header><h2 className='p-2'>Profit/Cost</h2></Card.Header>
                     <Card.Body>
@@ -157,7 +182,7 @@ class Main extends Component {
                       dip={this.state.dip}
                       />
                       <hr className='my-4'/>
-                      <Button className="mx-5 mb-3 p-1" onClick={this.handleClick}>Press to enable { this.state.show ? 'sales' : 'setup' } mode</Button>      
+                      <Button className="mx-5 mb-3 p-1" onClick={() => this.setState({ showing: !showing })}> Press to enable { this.state.showing ? 'sales' : 'setup' } mode</Button>      
                     </Card.Body>
                   </Card>
                   </div>

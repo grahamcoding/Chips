@@ -22,6 +22,7 @@ import { LOOKUP } from '../shared/lookup'
     render() {
       //Renders List Options
       const { dataValue } = this.state;
+      const {fiveshelf} = this.props
       const options = this.state.lookup[dataValue]; //Sets option for mapping the dropdown to the value selected for the product type
       const dip = this.state.lookup["Dip"] //Pulls the dip section of the lookup for dip selection
 
@@ -33,43 +34,81 @@ import { LOOKUP } from '../shared/lookup'
       //Initial Div selects overall dropdown options - need to add manually from LOOKUP so it can map the option by name
       return (
         <div>
-          <p className='lead'>Select Type of Product</p>
-          <select onChange={this.onChange} className='lead p-1 mb-3'>
+          <p className='h6 pb-2'>Select Type of Product
+          <select onChange={this.onChange} className='p-1 mb-3 ms-3'>
             <option value="Potato">Potato Chips</option>
             <option value="Tortilla">Tortilla Chips</option>
             <option value="Cheeze">Cheeze Snacks</option>
-          </select>
-          <p className='lead'>Select Dip Option</p>
-          <select value={this.props.dip} onChange={e => this.props.handleChangeDip(e)} className='lead p-1'>
+          </select></p>
+          <p className='h6'>Select Dip Option:
+          <select value={this.props.dip} onChange={e => this.props.handleChangeDip(e)} className='p-1 mb-2 ms-3'>
           {dip.map(o => <option key={o.id} value={(o.id) + ' ' + (o.name) + ' ' + (o.price) + ' ' + (o.bag) + ' ' + (o.case) + ' ' + (o.image)}>{o.name}</option>)}
-          </select>
+          </select></p>
 
-          <p className='lead'>Cases Required: <strong>{dipcases[4]}</strong></p>
+          <p>Dip Cases Required: <strong>{dipcases[4]}</strong></p>
 
         <hr className='mb-4' />
 
-          <select value={this.props.row1} onChange={e => this.props.handleChange1(e)} className='lead p-1'>
+        <p className='h6 pb-2'>Select Display Windows</p>
+
+
+
+
+        { fiveshelf 
+                    ?                 
+                      <div>
+
+        <p className='pt-1'>Window 1 : 
+          <select value={this.props.row1} onChange={e => this.props.handleChange1(e)} className='p-1 ms-1'>
             {options.map(o => <option key={o.id} value={(o.id) + ' ' + (o.name) + ' ' + (o.price) + ' ' + (o.bag) + ' ' + (o.case) + ' ' + (o.image)}>{o.name}</option>)}
-          </select>
-
-        <p className='lead'>Cases Required: <strong>{row1cases[4]}</strong></p>
-
-        <hr className='mb-4'/>
+          </select></p>
 
 
-        <select value={this.props.row2} onChange={e => this.props.handleChange2(e)} className='lead p-1'>
+        <p>Cases Required: <strong>{row1cases[4]}</strong></p>
+
+        <hr className='mb-2'/>
+
+        <p className='pt-1'>Window 2 : 
+        <select value={this.props.row1} onChange={e => this.props.handleChange1(e)} className='p-1 ms-1'>
+            {options.map(o => <option key={o.id} value={(o.id) + ' ' + (o.name) + ' ' + (o.price) + ' ' + (o.bag) + ' ' + (o.case) + ' ' + (o.image)}>{o.name}</option>)}
+          </select></p>
+
+        <p>Cases Required: <strong>{row1cases[4]}</strong></p>
+
+        <hr className='mb-2'/>
+
+                    </div>
+                    :
+                    null
+              }
+
+
+
+
+        <p className='pt-1'>Window { this.props.fiveshelf? '3 : ' : '1 : ' }
+        <select value={this.props.row1} onChange={e => this.props.handleChange1(e)} className='p-1'>
+            {options.map(o => <option key={o.id} value={(o.id) + ' ' + (o.name) + ' ' + (o.price) + ' ' + (o.bag) + ' ' + (o.case) + ' ' + (o.image)}>{o.name}</option>)}
+          </select></p>
+
+        <p>Cases Required: <strong>{row1cases[4]}</strong></p>
+
+        <hr className='mb-2'/>
+
+        <p className='pt-1'>Window { this.props.fiveshelf? '4 : ' : '2 : ' }
+        <select value={this.props.row2} onChange={e => this.props.handleChange2(e)} className='p-1'>
             {options.map(o => <option key={o.id} value={(o.id) + ' ' + (o.name) + ' ' + (o.price) + ' ' + (o.bag) + ' ' + (o.case)}>{o.name}</option>)}
-          </select>
+          </select></p>
 
-        <p className='lead'>Cases Required: <strong>{row2cases[4]}</strong></p>
+        <p>Cases Required: <strong>{row2cases[4]}</strong></p>
 
-        <hr className='mb-4'/>
+        <hr className='mb-2'/>
 
-        <select value={this.props.row3} onChange={e => this.props.handleChange3(e)} className='lead p-1'>
+        <p className='pt-1'>Window { this.props.fiveshelf? '5 : ' : '3 : ' }
+        <select value={this.props.row3} onChange={e => this.props.handleChange3(e)} className='p-1'>
             {options.map(o => <option key={o.id} value={(o.id) + ' ' + (o.name) + ' ' + (o.price) + ' ' + (o.bag) + ' ' + (o.case)}>{o.name}</option>)}
-          </select>
+          </select></p>
 
-        <p className='lead'>Cases Required: <strong>{row3cases[4]}</strong></p>
+        <p>Cases Required: <strong>{row3cases[4]}</strong></p>
 
         </div>
       );
