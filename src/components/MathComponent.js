@@ -5,7 +5,8 @@ import React, {Component}  from 'react';
     constructor(props) {
       super(props);
       this.state = {
-        margin: '0.00'
+        margin: '0.00',
+        dipmargin: '0.00'
       }
     }
   
@@ -17,13 +18,15 @@ import React, {Component}  from 'react';
 
     render() {
 
-      let row1 = this.props.row1.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
+      const row1 = this.props.row1.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
       const row2 = this.props.row2.split(" ")  
       const row3 = this.props.row3.split(" ")
+      const dip = this.props.dip.split(" ")  
 
-      const retailCost = (row1[2] * row1[3] * row1[4]) + (row2[2] * row2[3] * row2[4]) + (row3[2] * row3[3] * row3[4])
+      const retailCost = (row1[2] * row1[3] * row1[4]) + (row2[2] * row2[3] * row2[4]) + (row3[2] * row3[3] * row3[4]) + (dip[2] * dip[3] * dip[4])
       const margin = this.state.margin
-      const setupCost = ((row1[2]-margin) * row1[3] * row1[4]) + ((row2[2]-margin) * row2[3] * row2[4]) + ((row3[2]-margin) * row3[3] * row3[4])
+      const dipmargin = this.state.dipmargin
+      const setupCost = ((row1[2]-margin) * row1[3] * row1[4]) + ((row2[2]-margin) * row2[3] * row2[4]) + ((row3[2]-margin) * row3[3] * row3[4]) + ((dip[2]-dipmargin) * dip[3] * dip[4])
       const storeProfit = retailCost - setupCost
 
       return (
@@ -33,12 +36,19 @@ import React, {Component}  from 'react';
           <p className='p-1'><h5>Setup Cost = ${this.getNum(setupCost)}</h5> </p>
           <hr/>
           <p className='p-1'><h2>Store Profit = ${this.getNum(storeProfit)}</h2></p>
-          <p className='p-1'><span className='me-2 h5'>Store Margin Per Bag = $</span>
+          <p className='p-1'><span className='me-2 h6'>Store Margin Per Bag = $</span>
           <input type="text"
-          size="2"
-          className='h5 text-center'
+          size="1"
+          className='h6 text-center'
           value={ this.state.margin }
           onChange={(e) => this.setState({ margin: e.target.value }) }/>
+          </p>
+          <p className='p-1'><span className='me-2 h6'>Store Dip Margin Per Jar = $</span>
+          <input type="text"
+          size="1"
+          className='h6 text-center'
+          value={ this.state.dipmargin }
+          onChange={(e) => this.setState({ dipmargin: e.target.value }) }/>
           </p>
 
 

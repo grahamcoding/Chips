@@ -1,9 +1,10 @@
 export const LOOKUP = {
   "Dip": [
     { id: '--', name: 'Select...', price: '--', bag: '--', case: '--' },
-    { id: 'c1', name: 'Salsa', price: '4.48', bag: '12', case: '2' },
-    { id: 'c2', name: 'Cheeze', price: '4.99', bag: '12', case: '2' },
-    { id: 'c3', name: 'Ranch', price: '4.99', bag: '12', case: '2' }
+    { id: 'd0', name: 'None', price: '0', bag: '0', case: '0' },
+    { id: 'd1', name: 'Salsa', price: '3.48', bag: '12', case: '2' },
+    { id: 'd2', name: 'Cheeze', price: '4.48', bag: '12', case: '2' },
+    { id: 'd3', name: 'Ranch', price: '4.48', bag: '12', case: '2' }
   ],
     "Potato": [
       { id: '--', name: 'Select...', price: '--', bag: '--', case: '--' },

@@ -56,13 +56,18 @@ class Main extends Component {
       ev.target.src = '/assets/images/blank.png'  //Pulls "on error" prop from img to provide a default image instead of a broken image.
     }
 
+    addDefaultSrcDip(ev){
+      ev.target.src = '/assets/images/dipblank.png'  //Pulls "on error" prop from img to provide a default image instead of a broken image.
+    }
+
 
     render() {
 
       const row1split = this.state.row1.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
       const row2split = this.state.row2.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
       const row3split = this.state.row3.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
-      
+      const dipcases = this.state.dip.split(" ")  
+
         return(
       <div>
         <div className="container">
@@ -100,7 +105,12 @@ class Main extends Component {
                       <Card.Body>                      
                         <Table   bordered size="lg">
                         <tbody>
-                              
+                          <tr>
+                              <img width='60px' src={`/assets/images/${dipcases[0]}.png`} onError={this.addDefaultSrcDip} alt='{dipcases[1]}'/>
+                              <img width='60px' src={`/assets/images/${dipcases[0]}.png`} onError={this.addDefaultSrcDip} alt='{dipcases[1]}'/>
+                              <img width='60px' src={`/assets/images/${dipcases[0]}.png`} onError={this.addDefaultSrcDip} alt='{dipcases[1]}'/>
+                              <img width='60px' src={`/assets/images/${dipcases[0]}.png`} onError={this.addDefaultSrcDip} alt='{dipcases[1]}'/>
+                          </tr>
                           <tr>
                               <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
                               <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
@@ -144,6 +154,7 @@ class Main extends Component {
                       row1={this.state.row1}
                       row2={this.state.row2}
                       row3={this.state.row3}
+                      dip={this.state.dip}
                       />
                       <hr className='my-4'/>
                       <Button className="mx-5 mb-3 p-1" onClick={this.handleClick}>Press to enable { this.state.show ? 'sales' : 'setup' } mode</Button>      
