@@ -22,13 +22,15 @@ import { LOOKUP } from '../shared/lookup'
     render() {
       //Renders List Options
       const { dataValue } = this.state;
-      const {fiveshelf} = this.props
+      const { fiveshelf } = this.props;
       const options = this.state.lookup[dataValue]; //Sets option for mapping the dropdown to the value selected for the product type
       const dip = this.state.lookup["Dip"] //Pulls the dip section of the lookup for dip selection
 
       const row1cases = this.props.row1.split(" ")  //Split Result by word into new array to call values (cases per window) out of the dropdowns.
       const row2cases = this.props.row2.split(" ")  
-      const row3cases = this.props.row3.split(" ") 
+      const row3cases = this.props.row3.split(" ")
+      const row4cases = this.props.row4.split(" ") 
+      const row5cases = this.props.row5.split(" ") 
       const dipcases = this.props.dip.split(" ")  
 
       //Initial Div selects overall dropdown options - need to add manually from LOOKUP so it can map the option by name
@@ -59,21 +61,21 @@ import { LOOKUP } from '../shared/lookup'
                       <div>
 
         <p className='pt-1'>Window 1 : 
-          <select value={this.props.row1} onChange={e => this.props.handleChange1(e)} className='p-1 ms-1'>
+          <select value={this.props.row4} onChange={e => this.props.handleChange4(e)} className='p-1 ms-1'>
             {options.map(o => <option key={o.id} value={(o.id) + ' ' + (o.name) + ' ' + (o.price) + ' ' + (o.bag) + ' ' + (o.case) + ' ' + (o.image)}>{o.name}</option>)}
           </select></p>
 
 
-        <p>Cases Required: <strong>{row1cases[4]}</strong></p>
+        <p>Cases Required: <strong>{row4cases[4]}</strong></p>
 
         <hr className='mb-2'/>
 
         <p className='pt-1'>Window 2 : 
-        <select value={this.props.row1} onChange={e => this.props.handleChange1(e)} className='p-1 ms-1'>
+        <select value={this.props.row5} onChange={e => this.props.handleChange5(e)} className='p-1 ms-1'>
             {options.map(o => <option key={o.id} value={(o.id) + ' ' + (o.name) + ' ' + (o.price) + ' ' + (o.bag) + ' ' + (o.case) + ' ' + (o.image)}>{o.name}</option>)}
           </select></p>
 
-        <p>Cases Required: <strong>{row1cases[4]}</strong></p>
+        <p>Cases Required: <strong>{row5cases[4]}</strong></p>
 
         <hr className='mb-2'/>
 

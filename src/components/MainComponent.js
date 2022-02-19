@@ -4,7 +4,7 @@ import Dropdown from './DropdownComponent';
 import Math from './MathComponent';
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import Fade from 'react-reveal/Fade';
+
 
 class Main extends Component {
 
@@ -15,6 +15,8 @@ class Main extends Component {
           row1: 'Test',   //Setting state for parent component to handle to row information passed up and down the entire app
           row2: 'Test',
           row3: 'Test',
+          row4: 'Test',
+          row5: 'Test',
           dip: 'Test',
           showing: true,
           fiveshelf: false,
@@ -24,6 +26,8 @@ class Main extends Component {
         this.handleChange1 = this.handleChange1.bind(this);
         this.handleChange2 = this.handleChange2.bind(this);
         this.handleChange3 = this.handleChange3.bind(this);
+        this.handleChange4 = this.handleChange4.bind(this);
+        this.handleChange5 = this.handleChange5.bind(this);
         this.handleChangeDip = this.handleChangeDip.bind(this);
 
     }
@@ -44,6 +48,14 @@ class Main extends Component {
       this.setState({ row3: e.target.value });
     }
 
+    handleChange4(e) {
+      this.setState({ row4: e.target.value });
+    }
+    
+    handleChange5(e) {
+      this.setState({ row5: e.target.value });
+    }
+
     handleChangeDip(e) {
       this.setState({ dip: e.target.value });
     }
@@ -59,11 +71,13 @@ class Main extends Component {
 
     render() {
 
-      const { showing } = this.state; // Enables Hiding of Components
+      const { showing } = this.state; // Enables Sales Mode toggle
       const { fiveshelf } = this.state; // 5 Shelf Toggle
       const row1split = this.state.row1.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
       const row2split = this.state.row2.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
       const row3split = this.state.row3.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
+      const row4split = this.state.row4.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
+      const row5split = this.state.row5.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
       const dipcases = this.state.dip.split(" ") //Split Result by word into new array to call values out of the dropdowns.
 
         return(
@@ -87,6 +101,10 @@ class Main extends Component {
                         handleChange2={this.handleChange2}
                         row3={this.state.row3}
                         handleChange3={this.handleChange3}
+                        row4={this.state.row4}
+                        handleChange4={this.handleChange4}
+                        row5={this.state.row5}
+                        handleChange5={this.handleChange5}
                         dip={this.state.dip}
                         handleChangeDip={this.handleChangeDip}
                         fiveshelf={this.state.fiveshelf}
@@ -110,9 +128,9 @@ class Main extends Component {
                         { fiveshelf 
                     ?                 
                           <tr>
-                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
-                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
-                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
+                              <img width='85px' src={`/assets/images/${row4split[0]}.png`} onError={this.addDefaultSrc} alt='{row4split[1]}'/>
+                              <img width='85px' src={`/assets/images/${row4split[0]}.png`} onError={this.addDefaultSrc} alt='{row4split[1]}'/>
+                              <img width='85px' src={`/assets/images/${row4split[0]}.png`} onError={this.addDefaultSrc} alt='{row4split[1]}'/>
                           </tr>
               
                     :
@@ -121,9 +139,9 @@ class Main extends Component {
                        { fiveshelf 
                     ?                 
                           <tr>
-                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
-                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
-                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
+                              <img width='85px' src={`/assets/images/${row5split[0]}.png`} onError={this.addDefaultSrc} alt='{row5split[1]}'/>
+                              <img width='85px' src={`/assets/images/${row5split[0]}.png`} onError={this.addDefaultSrc} alt='{row5split[1]}'/>
+                              <img width='85px' src={`/assets/images/${row5split[0]}.png`} onError={this.addDefaultSrc} alt='{row5split[1]}'/>
                           </tr>
               
                     :
@@ -179,13 +197,18 @@ class Main extends Component {
                       row1={this.state.row1}
                       row2={this.state.row2}
                       row3={this.state.row3}
+                      row4={this.state.row4}
+                      row5={this.state.row5}
                       dip={this.state.dip}
+                      fiveshelf={this.state.fiveshelf}
                       />
                       <hr className='my-4'/>
                       <Button className="mx-5 mb-3 p-1" onClick={() => this.setState({ showing: !showing })}> Press to enable { this.state.showing ? 'sales' : 'setup' } mode</Button>      
                     </Card.Body>
                   </Card>
                   </div>
+
+
 
           </div>
 
