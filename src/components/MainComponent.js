@@ -123,7 +123,7 @@ class Main extends Component {
                       </Card.Header>
 
                       <Card.Body>                      
-                        <Table   bordered size="lg">
+                        <Table bordered size="lg">
                         <tbody>
                         { fiveshelf 
                     ?                 
