@@ -22,7 +22,7 @@ import { LOOKUP } from '../shared/lookup'
     render() {
       //Renders List Options
       const { dataValue } = this.state;
-      const { fiveshelf } = this.props;
+      const { fiveshelf } = this.props; // 5 Shelf Toggle pulled from parent's props to change layout based on shelf size selection.
       const options = this.state.lookup[dataValue]; //Sets option for mapping the dropdown to the value selected for the product type
       const dip = this.state.lookup["Dip"] //Pulls the dip section of the lookup for dip selection
 

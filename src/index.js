@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+//Rendering App.js as the main piece of the app. Remove strictmode for true deployment...
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

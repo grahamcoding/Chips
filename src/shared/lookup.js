@@ -1,3 +1,12 @@
+//Lookup holds the product information, broken down as an object of each product type with an array of each individual product.
+//Can easily extend to add more relevant information if necessary.
+
+//id is best practice for React arrays to hold index, but doubles to mark out the image pulled for each product
+//name is the individual product name (Doesn't support more than one word to the names - something to look into)
+//price is product price.
+//bag is bag count per case.
+//case is a predetermined number of cases needed per window in a display.
+
 export const LOOKUP = {
   "Dip": [
     { id: '--', name: 'Select...', price: '--', bag: '--', case: '--' },
