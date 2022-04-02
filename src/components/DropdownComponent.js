@@ -54,8 +54,6 @@ import { LOOKUP } from '../shared/lookup'
         <p className='h6 pb-2'>Select Display Windows</p>
 
 
-
-
         { fiveshelf 
                     ?                 
                       <div>
@@ -83,8 +81,6 @@ import { LOOKUP } from '../shared/lookup'
                     :
                     null
               }
-
-
 
 
         <p className='pt-1'>Window { this.props.fiveshelf? '3 : ' : '1 : ' }

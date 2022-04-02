@@ -74,11 +74,11 @@ class Main extends Component {
       const { showing } = this.state; // Enables Sales Mode toggle
       const { fiveshelf } = this.state; // 5 Shelf Toggle
       const row1split = this.state.row1.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
-      const row2split = this.state.row2.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
-      const row3split = this.state.row3.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
-      const row4split = this.state.row4.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
-      const row5split = this.state.row5.split(" ")  //Split Result by word into new array to call values out of the dropdowns.
-      const dipcases = this.state.dip.split(" ") //Split Result by word into new array to call values out of the dropdowns.
+      const row2split = this.state.row2.split(" ")  
+      const row3split = this.state.row3.split(" ")  
+      const row4split = this.state.row4.split(" ")  
+      const row5split = this.state.row5.split(" ") 
+      const dipcases = this.state.dip.split(" ") 
 
         return(
       <div>
