@@ -43,59 +43,63 @@ import React, {Component}  from 'react';
       return (
         <div>
 
-{ fiveshelf 
-  ?                 
-null
-  :
-  <div>
-  <p className='p-1'><h5>Retail Cost = ${this.getNum(retailCost)} </h5></p>
-<hr/>
-<p className='p-1'><h5>Setup Cost = ${this.getNum(setupCost)}</h5> </p>
-<hr/>
-<p className='p-1'><h2>Store Profit = ${this.getNum(storeProfit)}</h2></p>
-<p className='p-1'><span className='me-2 h6'>Store Margin Per Bag = $</span>
-<input type="text"
-size="1"
-className='h6 text-center'
-value={ this.state.margin }
-onChange={(e) => this.setState({ margin: e.target.value }) }/>
-</p>
-<p className='p-1'><span className='me-2 h6'>Store Dip Margin Per Jar = $</span>
-<input type="text"
-size="1"
-className='h6 text-center'
-value={ this.state.dipmargin }
-onChange={(e) => this.setState({ dipmargin: e.target.value }) }/>
-</p>
-</div>
-}
+{ /* 3 Shelf Display */}
 
-{ fiveshelf 
-  ?                 
-<div>
-  <p className='p-1'><h5>Retail Cost = ${this.getNum(retailCostFiveShelf)} </h5></p>
-<hr/>
-<p className='p-1'><h5>Setup Cost = ${this.getNum(setupCostFiveShelf)}</h5> </p>
-<hr/>
-<p className='p-1'><h2>Store Profit = ${this.getNum(storeProfitFiveShelf)}</h2></p>
-<p className='p-1'><span className='me-2 h6'>Store Margin Per Bag = $</span>
-<input type="text"
-size="1"
-className='h6 text-center'
-value={ this.state.margin }
-onChange={(e) => this.setState({ margin: e.target.value }) }/>
-</p>
-<p className='p-1'><span className='me-2 h6'>Store Dip Margin Per Jar = $</span>
-<input type="text"
-size="1"
-className='h6 text-center'
-value={ this.state.dipmargin }
-onChange={(e) => this.setState({ dipmargin: e.target.value }) }/>
-</p>
-</div>
-  :
-null
-}
+            { fiveshelf 
+              ?                 
+            null
+              :
+              <div>
+              <p className='p-1'><h5>Retail Cost = ${this.getNum(retailCost)} </h5></p>
+            <hr/>
+            <p className='p-1'><h5>Setup Cost = ${this.getNum(setupCost)}</h5> </p>
+            <hr/>
+            <p className='p-1'><h2>Store Profit = ${this.getNum(storeProfit)}</h2></p>
+            <p className='p-1'><span className='me-2 h6'>Store Margin Per Bag = $</span>
+            <input type="text"
+            size="1"
+            className='h6 text-center'
+            value={ this.state.margin }
+            onChange={(e) => this.setState({ margin: e.target.value }) }/>
+            </p>
+            <p className='p-1'><span className='me-2 h6'>Store Dip Margin Per Jar = $</span>
+            <input type="text"
+            size="1"
+            className='h6 text-center'
+            value={ this.state.dipmargin }
+            onChange={(e) => this.setState({ dipmargin: e.target.value }) }/>
+            </p>
+            </div>
+            }
+
+{ /* 5 Shelf Display */}
+
+            { fiveshelf 
+              ?                 
+            <div>
+              <p className='p-1'><h5>Retail Cost = ${this.getNum(retailCostFiveShelf)} </h5></p>
+            <hr/>
+            <p className='p-1'><h5>Setup Cost = ${this.getNum(setupCostFiveShelf)}</h5> </p>
+            <hr/>
+            <p className='p-1'><h2>Store Profit = ${this.getNum(storeProfitFiveShelf)}</h2></p>
+            <p className='p-1'><span className='me-2 h6'>Store Margin Per Bag = $</span>
+            <input type="text"
+            size="1"
+            className='h6 text-center'
+            value={ this.state.margin }
+            onChange={(e) => this.setState({ margin: e.target.value }) }/>
+            </p>
+            <p className='p-1'><span className='me-2 h6'>Store Dip Margin Per Jar = $</span>
+            <input type="text"
+            size="1"
+            className='h6 text-center'
+            value={ this.state.dipmargin }
+            onChange={(e) => this.setState({ dipmargin: e.target.value }) }/>
+            </p>
+            </div>
+              :
+            null
+            }
 
         </div>
         

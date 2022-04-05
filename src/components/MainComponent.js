@@ -81,139 +81,143 @@ class Main extends Component {
       const dipcases = this.state.dip.split(" ") 
 
         return(
-      <div>
-        <div className="container">
-          <div className='row justify-content-center p-3'>
-            <Card className='p-1'><h1>Salty Snack Sales Tool (3ST)</h1></Card>
-          </div>
-          
-             <div className="row mx-auto">
-             { showing 
-                    ?                 
-                    <div className='col-lg'>                     
-                    <Card>
-                    <Card.Header ><h3 className='p-1'>Display Windows</h3></Card.Header>
-                      <Card.Body>
-                        <Dropdown
-                        row1={this.state.row1}
-                        handleChange1={this.handleChange1}
-                        row2={this.state.row2}
-                        handleChange2={this.handleChange2}
-                        row3={this.state.row3}
-                        handleChange3={this.handleChange3}
-                        row4={this.state.row4}
-                        handleChange4={this.handleChange4}
-                        row5={this.state.row5}
-                        handleChange5={this.handleChange5}
-                        dip={this.state.dip}
-                        handleChangeDip={this.handleChangeDip}
-                        fiveshelf={this.state.fiveshelf}
-                        />
-                      </Card.Body>
-                    </Card>
-                    </div>
-                    :
-                    null
-              }
-
-                    <div className="col">
-                    <Card>
-                      <Card.Header><h2 className='p-2'>Sales Display Preview</h2>
-                      <Button className="mx-4 mb-1 p-1" onClick={() => this.setState({ fiveshelf: !fiveshelf })}> Switch to { this.state.fiveshelf? '3 Shelf' : '5 Shelf' } Display</Button>
-                      </Card.Header>
-
-                      <Card.Body>                      
-                        <Table bordered size="lg">
-                        <tbody>
-                        { fiveshelf 
-                    ?                 
-                          <tr>
-                              <img width='85px' src={`/assets/images/${row4split[0]}.png`} onError={this.addDefaultSrc} alt='{row4split[1]}'/>
-                              <img width='85px' src={`/assets/images/${row4split[0]}.png`} onError={this.addDefaultSrc} alt='{row4split[1]}'/>
-                              <img width='85px' src={`/assets/images/${row4split[0]}.png`} onError={this.addDefaultSrc} alt='{row4split[1]}'/>
-                          </tr>
+          <div>
+            <div className="container">
+              <div className='row justify-content-center p-3'>
+                <Card className='p-1'><h1>Salty Snack Sales Tool (3ST)</h1></Card>
+              </div>
               
-                    :
-                    null
-              }
-                       { fiveshelf 
-                    ?                 
-                          <tr>
-                              <img width='85px' src={`/assets/images/${row5split[0]}.png`} onError={this.addDefaultSrc} alt='{row5split[1]}'/>
-                              <img width='85px' src={`/assets/images/${row5split[0]}.png`} onError={this.addDefaultSrc} alt='{row5split[1]}'/>
-                              <img width='85px' src={`/assets/images/${row5split[0]}.png`} onError={this.addDefaultSrc} alt='{row5split[1]}'/>
-                          </tr>
-              
-                    :
-                    null
-              }
-                          <tr>
-                              <img width='60px' src={`/assets/images/${dipcases[0]}.png`} onError={this.addDefaultSrcDip} alt='{dipcases[1]}'/>
-                              <img width='60px' src={`/assets/images/${dipcases[0]}.png`} onError={this.addDefaultSrcDip} alt='{dipcases[1]}'/>
-                              <img width='60px' src={`/assets/images/${dipcases[0]}.png`} onError={this.addDefaultSrcDip} alt='{dipcases[1]}'/>
-                              <img width='60px' src={`/assets/images/${dipcases[0]}.png`} onError={this.addDefaultSrcDip} alt='{dipcases[1]}'/>
-                          </tr>
-                          <tr>
-                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
-                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
-                              <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
-                          </tr>
-                          <tr>
-                              <img width='85px' src={`/assets/images/${row2split[0]}.png`} onError={this.addDefaultSrc} alt='{row2split[1]}'/>
-                              <img width='85px' src={`/assets/images/${row2split[0]}.png`} onError={this.addDefaultSrc} alt='{row2split[1]}'/>
-                              <img width='85px' src={`/assets/images/${row2split[0]}.png`} onError={this.addDefaultSrc} alt='{row2split[1]}'/>
-                          </tr>
-                          <tr>
-                              <img width='85px' src={`/assets/images/${row3split[0]}.png`} onError={this.addDefaultSrc} alt='{row3split[1]}'/>
-                              <img width='85px' src={`/assets/images/${row3split[0]}.png`} onError={this.addDefaultSrc} alt='{row3split[1]}'/>
-                              <img width='85px' src={`/assets/images/${row3split[0]}.png`} onError={this.addDefaultSrc} alt='{row3split[1]}'/>
-                          </tr>
+                <div className="row mx-auto">
+                { showing 
+                        ?                 
+                        <div className='col-lg'>                     
+                        <Card>
+                        <Card.Header ><h3 className='p-1'>Display Windows</h3></Card.Header>
+                          <Card.Body>
+                            <Dropdown
+                            row1={this.state.row1}
+                            handleChange1={this.handleChange1}
+                            row2={this.state.row2}
+                            handleChange2={this.handleChange2}
+                            row3={this.state.row3}
+                            handleChange3={this.handleChange3}
+                            row4={this.state.row4}
+                            handleChange4={this.handleChange4}
+                            row5={this.state.row5}
+                            handleChange5={this.handleChange5}
+                            dip={this.state.dip}
+                            handleChangeDip={this.handleChangeDip}
+                            fiveshelf={this.state.fiveshelf}
+                            />
+                          </Card.Body>
+                        </Card>
+                        </div>
+                        :
+                        null
+                  }
 
-                        </tbody>
-                      </Table>
-                      </Card.Body>       
-                    { /* 
-                    Comments in Render!
+                        <div className="col">
+                        <Card>
+                          <Card.Header><h2 className='p-2'>Sales Display Preview</h2>
+                          <Button className="mx-4 mb-1 p-1" onClick={() => this.setState({ fiveshelf: !fiveshelf })}> Switch to { this.state.fiveshelf? '3 Shelf' : '5 Shelf' } Display</Button>
+                          </Card.Header>
 
-                    Testing: Row 1 Full Data is {this.state.row1}, 
-                      ID is {row1split[0]}, 
-                      Name is {row1split[1]},
-                      Price {row1split[2]}, 
-                      Bags per Case is {row1split[3]},
-                      Cases per window is {row1split[4]},
-                      Image is {row1split[5]},
-                      Cost is {row1split[2] * row1split[3]} 
+                          <Card.Body>                      
+                            <Table bordered size="lg">
+                            <tbody>
+                              
+                            { /* Five Shelf Layers Added On with Toggle */}
+                            { fiveshelf 
+                              ?
+                                    <tr>
+                                        <img width='85px' src={`/assets/images/${row4split[0]}.png`} onError={this.addDefaultSrc} alt='{row4split[1]}'/>
+                                        <img width='85px' src={`/assets/images/${row4split[0]}.png`} onError={this.addDefaultSrc} alt='{row4split[1]}'/>
+                                        <img width='85px' src={`/assets/images/${row4split[0]}.png`} onError={this.addDefaultSrc} alt='{row4split[1]}'/>
+                                    </tr>
+                              :
+                              null
+                             }
 
-                      row2 is {this.state.row2}
-                     row3 is {this.state.row3} */}
+                            { fiveshelf 
+                              ?                 
+                                <tr>
+                                    <img width='85px' src={`/assets/images/${row5split[0]}.png`} onError={this.addDefaultSrc} alt='{row5split[1]}'/>
+                                    <img width='85px' src={`/assets/images/${row5split[0]}.png`} onError={this.addDefaultSrc} alt='{row5split[1]}'/>
+                                    <img width='85px' src={`/assets/images/${row5split[0]}.png`} onError={this.addDefaultSrc} alt='{row5split[1]}'/>
+                                </tr>
+                              :
+                              null
+                             }
+
+                            { /* Default 3 Shelf Layers*/}
+                              <tr>
+                                  <img width='60px' src={`/assets/images/${dipcases[0]}.png`} onError={this.addDefaultSrcDip} alt='{dipcases[1]}'/>
+                                  <img width='60px' src={`/assets/images/${dipcases[0]}.png`} onError={this.addDefaultSrcDip} alt='{dipcases[1]}'/>
+                                  <img width='60px' src={`/assets/images/${dipcases[0]}.png`} onError={this.addDefaultSrcDip} alt='{dipcases[1]}'/>
+                                  <img width='60px' src={`/assets/images/${dipcases[0]}.png`} onError={this.addDefaultSrcDip} alt='{dipcases[1]}'/>
+                              </tr>
+                              <tr>
+                                  <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
+                                  <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
+                                  <img width='85px' src={`/assets/images/${row1split[0]}.png`} onError={this.addDefaultSrc} alt='{row1split[1]}'/>
+                              </tr>
+                              <tr>
+                                  <img width='85px' src={`/assets/images/${row2split[0]}.png`} onError={this.addDefaultSrc} alt='{row2split[1]}'/>
+                                  <img width='85px' src={`/assets/images/${row2split[0]}.png`} onError={this.addDefaultSrc} alt='{row2split[1]}'/>
+                                  <img width='85px' src={`/assets/images/${row2split[0]}.png`} onError={this.addDefaultSrc} alt='{row2split[1]}'/>
+                              </tr>
+                              <tr>
+                                  <img width='85px' src={`/assets/images/${row3split[0]}.png`} onError={this.addDefaultSrc} alt='{row3split[1]}'/>
+                                  <img width='85px' src={`/assets/images/${row3split[0]}.png`} onError={this.addDefaultSrc} alt='{row3split[1]}'/>
+                                  <img width='85px' src={`/assets/images/${row3split[0]}.png`} onError={this.addDefaultSrc} alt='{row3split[1]}'/>
+                              </tr>
+
+                            </tbody>
+                          </Table>
+                          </Card.Body>   
+
+                        { /* 
+                        Math Testing: Row 1 Full Data is {this.state.row1}, 
+                          ID is {row1split[0]}, 
+                          Name is {row1split[1]},
+                          Price {row1split[2]}, 
+                          Bags per Case is {row1split[3]},
+                          Cases per window is {row1split[4]},
+                          Image is {row1split[5]},
+                          Cost is {row1split[2] * row1split[3]} 
+
+                          row2 is {this.state.row2}
+                          row3 is {this.state.row3} 
+                        */}
+
+                          </Card>
+                      </div>
+
+                      <div className='col-lg-4'>
+                      <Card>
+                        <Card.Header><h2 className='p-2'>Profit/Cost</h2></Card.Header>
+                        <Card.Body>
+                          <Math
+                          row1={this.state.row1}
+                          row2={this.state.row2}
+                          row3={this.state.row3}
+                          row4={this.state.row4}
+                          row5={this.state.row5}
+                          dip={this.state.dip}
+                          fiveshelf={this.state.fiveshelf}
+                          />
+                          <hr className='my-4'/>
+                          <Button className="mx-5 mb-3 p-1" onClick={() => this.setState({ showing: !showing })}> Press to enable { this.state.showing ? 'sales' : 'setup' } mode</Button>      
+                        </Card.Body>
                       </Card>
-                  </div>
-
-                  <div className='col-lg-4'>
-                  <Card>
-                    <Card.Header><h2 className='p-2'>Profit/Cost</h2></Card.Header>
-                    <Card.Body>
-                      <Math
-                      row1={this.state.row1}
-                      row2={this.state.row2}
-                      row3={this.state.row3}
-                      row4={this.state.row4}
-                      row5={this.state.row5}
-                      dip={this.state.dip}
-                      fiveshelf={this.state.fiveshelf}
-                      />
-                      <hr className='my-4'/>
-                      <Button className="mx-5 mb-3 p-1" onClick={() => this.setState({ showing: !showing })}> Press to enable { this.state.showing ? 'sales' : 'setup' } mode</Button>      
-                    </Card.Body>
-                  </Card>
-                  </div>
+                      </div>
 
 
 
-          </div>
+              </div>
 
+            </div>
         </div>
-     </div>
         )
 
     }
