@@ -43,7 +43,7 @@ import React, {Component}  from 'react';
       return (
         <div>
 
-{ /* 3 Shelf Display */}
+            { /* 3 Shelf Display */}
 
             { fiveshelf 
               ?                 
@@ -72,7 +72,7 @@ import React, {Component}  from 'react';
             </div>
             }
 
-{ /* 5 Shelf Display */}
+            { /* 5 Shelf Display */}
 
             { fiveshelf 
               ?                 

@@ -5,9 +5,7 @@ import Math from './MathComponent';
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
-
 class Main extends Component {
-
 
     constructor(props) {
         super(props);
@@ -21,7 +19,6 @@ class Main extends Component {
           showing: true,
           fiveshelf: false,
         }
-      
       
         this.handleChange1 = this.handleChange1.bind(this);
         this.handleChange2 = this.handleChange2.bind(this);
@@ -68,7 +65,6 @@ class Main extends Component {
       ev.target.src = '/assets/images/dipblank.png'  //Pulls "on error" prop from img to provide a default image instead of a broken image for dip.
     }
 
-
     render() {
 
       const { showing } = this.state; // Enables Sales Mode toggle
@@ -88,7 +84,10 @@ class Main extends Component {
               </div>
               
                 <div className="row mx-auto">
-                { showing 
+
+                        { /* Sales display toggle */}
+
+                        {showing 
                         ?                 
                         <div className='col-lg'>                     
                         <Card>
@@ -114,7 +113,7 @@ class Main extends Component {
                         </div>
                         :
                         null
-                  }
+                        }
 
                         <div className="col">
                         <Card>
